@@ -38,10 +38,24 @@ const { setupNotificationSocket } = require('./sockets/notificationSocket');
 setupNotificationSocket(io);
 
 // Middlewares
-app.use(cors({
-  origin: [process.env.CLIENT_URL, process.env.ADMIN_URL],
-  credentials: true
-}));
+const allowedOrigins = [
+  "https://eco-loop-xi.vercel.app",
+  "https://eco-loop-yfg4.vercel.app"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
