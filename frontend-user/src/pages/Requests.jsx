@@ -15,10 +15,10 @@ const Requests = () => {
   const [sentRequests, setSentRequests] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // We will manage state manually
+  // Tab change karva mate state
   const [tab, setTab] = useState('incoming');
 
-  // Review state
+  // Review (Feedback) mate na state
   const [reviewingReq, setReviewingReq] = useState(null);
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
@@ -48,9 +48,9 @@ const Requests = () => {
     try {
       await RequestService.updateRequestStatus(id, status);
       toast.success(`Request ${status} successfully!`);
-      fetchRequests(); // Refresh lists
+      fetchRequests(); // Lits ne refresh karo
       
-      // Points are awarded upon completion, so we sync the global user context!
+      // Request complete thay etle point male, to current user object update karvo pade
       if (status === 'completed' && updateUser) {
         const freshUser = await UserService.getProfile();
         updateUser(freshUser);
@@ -65,7 +65,7 @@ const Requests = () => {
     if (!reviewingReq) return;
     setSubmittingReview(true);
     try {
-      // Determine reviewee (if I am the owner in 'incoming', reviewee is requester. if I am requester in 'sent', reviewee is owner)
+      // Jene review aavano che eni ID naki karo (Jo incoming tab hoy to requester ne, ane jo sent hoy to owner ne)
       const isIncoming = tab === 'incoming';
       const reviewee_id = isIncoming ? reviewingReq.requester_id : reviewingReq.owner_id;
 
@@ -80,7 +80,7 @@ const Requests = () => {
       setComment('');
       setRating(5);
       
-      // Points are awarded for leaving a review, so sync context!
+      // Review aapva na pan point malse (Sync global user context)
       if (updateUser) {
         const freshUser = await UserService.getProfile();
         updateUser(freshUser);
@@ -106,7 +106,7 @@ const Requests = () => {
     <div style={{ padding: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
       <h1 style={{ marginBottom: '2rem', color: 'var(--color-text-main)' }}>Manage Requests</h1>
 
-      {/* Tabs */}
+      {/* Tabs (Incoming ane Sent vacche badalva) */}
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <button 
           onClick={() => setTab('incoming')}
@@ -136,7 +136,7 @@ const Requests = () => {
         <p>Loading requests...</p>
       ) : (
         <div>
-          {/* INCOMING REQUESTS TAB */}
+          {/* INCOMING REQUESTS TAB (Potana kachra par aaveli request jova) */}
           {tab === 'incoming' && (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
               {incomingRequests.length === 0 ? (
@@ -213,7 +213,7 @@ const Requests = () => {
             </div>
           )}
 
-          {/* SENT REQUESTS TAB */}
+          {/* SENT REQUESTS TAB (Pote bija na kachra par kareli request jova) */}
           {tab === 'sent' && (
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
               {sentRequests.length === 0 ? (
@@ -270,7 +270,7 @@ const Requests = () => {
         </div>
       )}
 
-      {/* REVIEW MODAL */}
+      {/* REVIEW MODAL (Feedback aapva mate nu popup box) */}
       {reviewingReq && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '1rem', backdropFilter: 'blur(5px)' }}>
           <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', padding: '2rem' }}>

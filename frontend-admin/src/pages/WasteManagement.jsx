@@ -13,7 +13,7 @@ const WasteManagement = () => {
 
   const fetchItems = async () => {
     try {
-      const data = await adminService.getAllWasteItems();
+      const data = await adminService.getAllWasteItems(); // Badha kachra ni item laavva mate
       setItems(data);
     } catch (error) {
       toast.error('Failed to load waste items');
@@ -22,6 +22,7 @@ const WasteManagement = () => {
     }
   };
 
+  // Item delete karva mate nu function
   const handleDelete = async (itemId) => {
     if (!window.confirm('CRITICAL: Are you sure you want to completely delete this item from the platform? This cannot be undone.')) return;
 
@@ -34,6 +35,7 @@ const WasteManagement = () => {
     }
   };
 
+  // Kachra nu status (Available, Exchanged ke Recycled) pramane color tag banavva mate
   const getStatusBadge = (status) => {
     switch (status) {
       case 'available':

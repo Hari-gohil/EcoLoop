@@ -25,7 +25,7 @@ const Users = () => {
   };
 
   const handleToggleBlock = async (userId, currentStatus, e) => {
-    e.stopPropagation(); // Prevent row click
+    e.stopPropagation(); // Row par click thava nathi devu
     if (!window.confirm(`Are you sure you want to ${currentStatus ? 'unblock' : 'block'} this user?`)) return;
 
     try {
@@ -38,7 +38,7 @@ const Users = () => {
   };
 
   const handleDelete = async (userId, e) => {
-    e.stopPropagation(); // Prevent row click
+    e.stopPropagation(); // Row par click thava nathi devu
     if (!window.confirm('CRITICAL: Are you sure you want to completely delete this user? This cannot be undone.')) return;
 
     try {

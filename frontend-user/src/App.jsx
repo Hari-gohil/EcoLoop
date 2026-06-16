@@ -13,7 +13,7 @@ function App() {
     <ThemeProvider>
       <AuthProvider>
         <BrowserRouter>
-          {/* Global UI Components */}
+          {/* Global UI Components (Badha pages ma je common dekhase) */}
           <Toaster 
             position="top-right"
             toastOptions={{
@@ -25,7 +25,7 @@ function App() {
             }}
           />
           
-          {/* Main Routes wrapped in Dashboard Layout */}
+          {/* Main Routes wrapped in Dashboard Layout (Main pages ne layout ni andar rakhya che) */}
           <ChatProvider>
             <MainLayout>
               <AppRoutes />

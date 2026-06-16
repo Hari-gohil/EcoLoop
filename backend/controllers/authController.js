@@ -2,16 +2,16 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// Generate JWT
+// JWT token banavva mate (jethi user login rahi shake)
 const generateToken = (id, role) => {
   return jwt.sign({ id, role }, process.env.JWT_SECRET, {
-    expiresIn: '30d',
+    expiresIn: '30d', // 30 divas pachi token expire thase
   });
 };
 
-// @desc    Register a new user
+// @desc    Navo user register karva mate (Sign up)
 // @route   POST /api/auth/register
-// @access  Public
+// @access  Public (Koi pan banavi shake)
 const register = async (req, res) => {
   try {
     const { name, email, password, phone, address } = req.body;
@@ -22,11 +22,11 @@ const register = async (req, res) => {
 
     const userExists = await User.findOne({ email });
     if (userExists) {
-      return res.status(400).json({ message: 'User already exists with this email' });
+      return res.status(400).json({ message: 'User already exists with this email' }); // Jo email pahela thi hase to error aapshe
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const salt = await bcrypt.genSalt(10); // Password ne safe banavva mate salt banavyo
+    const hashedPassword = await bcrypt.hash(password, salt); // Password ne hash (encrypt) kariyu
 
     const user = await User.create({
       name,
@@ -57,9 +57,9 @@ const register = async (req, res) => {
   }
 };
 
-// @desc    Register a new admin
+// @desc    Navo admin register karva mate
 // @route   POST /api/auth/register-admin
-// @access  Public
+// @access  Public (Pan secret key jaruri che)
 const registerAdmin = async (req, res) => {
   try {
     const { name, email, password, adminSecret } = req.body;
@@ -103,7 +103,7 @@ const registerAdmin = async (req, res) => {
   }
 };
 
-// @desc    Authenticate a user
+// @desc    User ne login karavva mate
 // @route   POST /api/auth/login
 // @access  Public
 const login = async (req, res) => {
@@ -116,14 +116,14 @@ const login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password); // Password check karse database sathe
 
     if (!isMatch) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'Invalid email or password' }); // Jo password khoto hoy to
     }
 
     if (user.is_blocked) {
-      return res.status(403).json({ message: 'Your account has been blocked by the administrator.' });
+      return res.status(403).json({ message: 'Your account has been blocked by the administrator.' }); // Jo admin a block karyo hoy to
     }
 
     res.json({
@@ -143,9 +143,9 @@ const login = async (req, res) => {
   }
 };
 
-// @desc    Get current logged in user
+// @desc    Jene login karyu che eni details levva mate (Profile)
 // @route   GET /api/auth/me
-// @access  Private
+// @access  Private (Khali login karelo user j joi shake)
 const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');

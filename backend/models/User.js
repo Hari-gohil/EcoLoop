@@ -1,61 +1,63 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose'); // Database schema banavva mate
+const bcrypt = require('bcryptjs'); // Password ne encrypt karva mate (Hashing)
 
+// User no schema (Database ma user kevo dekhase enu structure)
 const userSchema = new mongoose.Schema({
   name: {
-    type: String,
-    required: true
+    type: String, // Naam string hase
+    required: true // Naam aavashyak che (jaruri che)
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true // Ek email thi ek j user banse (duplicate allow nathi)
   },
   password: {
     type: String,
-    required: true
+    required: true // Password aapvo farjiyat che
   },
   role: {
     type: String,
-    enum: ['user', 'admin'],
-    default: 'user'
+    enum: ['user', 'admin'], // Role khali 'user' ke 'admin' j hoi shake
+    default: 'user' // Default badha navi ID ma 'user' role aavse
   },
   phone: {
     type: String,
-    default: null
+    default: null // Phone number optional che
   },
   address: {
     type: String,
-    default: null
+    default: null // Address pan optional che
   },
   profile_image: {
     type: String,
-    default: null
+    default: null // Profile photo ni link
   },
   upi_id: {
     type: String,
-    default: null
+    default: null // Payment aeva/leva mate UPI ID
   },
   points: {
     type: Number,
-    default: 0
+    default: 0 // Reward points, navo account banave etle 0 hase
   },
   is_blocked: {
     type: Boolean,
-    default: false
+    default: false // Admin user ne block kari shake, default false hase
   }
 }, {
-  timestamps: { createdAt: 'created_at', updatedAt: false }
+  timestamps: { createdAt: 'created_at', updatedAt: false } // Kyam account banayu eni date automatically save thase
 });
 
-// Configure JSON serialization to rename _id to id
+// JSON data front-end ma moklati vakhte '_id' ne 'id' ma badalva (Change _id to id)
 userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString();
-    delete returnedObject._id;
-    delete returnedObject.__v;
+    returnedObject.id = returnedObject._id.toString(); // _id ne string ma convert kari ne id ma save kariyu
+    delete returnedObject._id; // _id ne remove kariyo
+    delete returnedObject.__v; // __v (version) ne pan remove kariyo
   }
 });
 
+// Schema mathi User model banavyo
 const User = mongoose.model('User', userSchema);
-module.exports = User;
+module.exports = User; // Aane bija files ma use karva mate export kari didhu

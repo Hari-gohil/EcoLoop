@@ -15,7 +15,7 @@ const Register = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      // Exclude confirmPassword from data sent to API
+      // confirmPassword ne API ma moklvani jarur nathi, khali form purtu j che
       const { confirmPassword, ...userData } = data;
       await register(userData);
       toast.success('Registration successful! Welcome to EcoLoop.');

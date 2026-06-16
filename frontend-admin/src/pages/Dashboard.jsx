@@ -34,7 +34,7 @@ const Dashboard = () => {
       <h1 className="text-3xl font-bold text-white mb-6">Dashboard Overview</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {/* Stat Card 1 */}
+        {/* Stat Card 1 (Total Users batavva mate) */}
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm flex items-center justify-between">
           <div>
             <div className="text-slate-400 text-sm font-medium mb-1">Total Users</div>
@@ -45,7 +45,7 @@ const Dashboard = () => {
           </div>
         </div>
         
-        {/* Stat Card 2 */}
+        {/* Stat Card 2 (Ketla kachra haal ma available che) */}
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm flex items-center justify-between">
           <div>
             <div className="text-slate-400 text-sm font-medium mb-1">Active Waste Items</div>
@@ -56,7 +56,7 @@ const Dashboard = () => {
           </div>
         </div>
         
-        {/* Stat Card 3 */}
+        {/* Stat Card 3 (Ketla kachra nu exchange thai gayu) */}
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm flex items-center justify-between">
           <div>
             <div className="text-slate-400 text-sm font-medium mb-1">Total Exchanges Completed</div>

@@ -47,7 +47,7 @@ const AddWaste = () => {
       formData.append('category', data.category);
       formData.append('condition_status', data.condition_status);
       formData.append('price', data.price);
-      formData.append('wasteImage', imageFile); // 'wasteImage' is the key expected by backend multer config
+      formData.append('wasteImage', imageFile); // Backend backend ma 'wasteImage' naam thi file expect kare che
 
       await WasteService.createWaste(formData);
       toast.success('Waste item listed successfully!');
@@ -66,7 +66,7 @@ const AddWaste = () => {
       <div className="glass-panel" style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit(onSubmit)}>
           
-          {/* Image Upload Area */}
+          {/* Image Upload Area (Photo select karva mate) */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2rem' }}>
             <div 
               style={{ 

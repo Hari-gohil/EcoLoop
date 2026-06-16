@@ -5,7 +5,7 @@ const Chat = require('../models/Chat');
 const { sendNotification } = require('../services/notificationService');
 const GreenPointService = require('../services/greenPointService');
 
-// @desc    Send a request for a waste item
+// @desc    Kachra mate request mokalva (Send request for waste)
 // @route   POST /api/requests
 // @access  Private
 const sendRequest = async (req, res) => {
@@ -46,7 +46,7 @@ const sendRequest = async (req, res) => {
   }
 };
 
-// @desc    Accept a request
+// @desc    Aaveli request accept karva mate
 // @route   PUT /api/requests/:id/accept
 // @access  Private
 const acceptRequest = async (req, res) => {
@@ -79,7 +79,7 @@ const acceptRequest = async (req, res) => {
   }
 };
 
-// @desc    Reject a request
+// @desc    Aaveli request reject (cancel) karva mate
 // @route   PUT /api/requests/:id/reject
 // @access  Private
 const rejectRequest = async (req, res) => {
@@ -104,7 +104,7 @@ const rejectRequest = async (req, res) => {
   }
 };
 
-// @desc    Complete a request (exchanged/recycled) & Award Points
+// @desc    Request complete karva (exchanged) ane points aapva mate
 // @route   PUT /api/requests/:id/complete
 // @access  Private
 const completeRequest = async (req, res) => {
@@ -152,7 +152,7 @@ const completeRequest = async (req, res) => {
   }
 };
 
-// Helper for formatting requests to match previous SQL structure
+// Helper for formatting requests to match previous SQL structure (Purana structure sathe match karva)
 const formatRequests = (requests) => {
   return requests.map(req => {
     const obj = req.toJSON();
@@ -169,7 +169,7 @@ const formatRequests = (requests) => {
   });
 };
 
-// @desc    Get all requests made to the logged in user's items
+// @desc    Potana kachra par aaveli request jova mate (Incoming requests)
 // @route   GET /api/requests/incoming
 // @access  Private
 const getIncomingRequests = async (req, res) => {
@@ -186,7 +186,7 @@ const getIncomingRequests = async (req, res) => {
   }
 };
 
-// @desc    Get all requests made by the logged in user
+// @desc    Pote kareli requests jova mate (Outgoing requests)
 // @route   GET /api/requests/outgoing
 // @access  Private
 const getOutgoingRequests = async (req, res) => {

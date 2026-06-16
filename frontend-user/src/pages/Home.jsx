@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
       
-      {/* Hero Section */}
+      {/* Hero Section (Main upar no bhag jya title che) */}
       <div className="glass-panel" style={{ padding: '4rem 2rem', textAlign: 'center', marginBottom: '3rem' }}>
         <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', background: 'linear-gradient(to right, var(--color-primary), var(--color-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
           Smart Waste Exchange & Management
@@ -20,7 +20,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Features Section */}
+      {/* Features Section (Aapdi website su su kaam kare che e batavva mate) */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
         
         <div className="glass-panel" style={{ padding: '2rem', textAlign: 'center' }}>

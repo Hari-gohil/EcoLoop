@@ -15,7 +15,7 @@ const Login = () => {
     try {
       await login(data);
       toast.success('Welcome back to EcoLoop!');
-      navigate('/dashboard'); // Change to whatever dashboard route we create later
+      navigate('/dashboard'); // Login pachi dashboard par lai jav (Redirect to dashboard)
     } catch (error) {
       toast.error(error.response?.data?.message || 'Login failed. Please try again.');
     } finally {

@@ -1,8 +1,8 @@
 const WasteItem = require('../models/WasteItem');
 
-// @desc    Create a new waste item
+// @desc    Navo kachro add karva mate (Create new waste item)
 // @route   POST /api/waste
-// @access  Private
+// @access  Private (Login karelo hovo joiye)
 const createWaste = async (req, res) => {
   try {
     const { title, description, category, item_condition, condition_status, price } = req.body;
@@ -33,9 +33,9 @@ const createWaste = async (req, res) => {
   }
 };
 
-// @desc    Get all available waste items
+// @desc    Badha available kachra ne jova mate (Get all waste)
 // @route   GET /api/waste
-// @access  Public
+// @access  Public (Koi pan joi shake)
 const getAllWaste = async (req, res) => {
   try {
     const statusFilter = req.query.status || 'available';
@@ -63,7 +63,7 @@ const getAllWaste = async (req, res) => {
   }
 };
 
-// @desc    Get single waste item
+// @desc    Koi ek specific kachra ni puri detail jova mate (Single waste detail)
 // @route   GET /api/waste/:id
 // @access  Public
 const getSingleWaste = async (req, res) => {
@@ -98,7 +98,7 @@ const getSingleWaste = async (req, res) => {
   }
 };
 
-// @desc    Update waste item
+// @desc    Add karelo kachro update karva mate (Update waste item)
 // @route   PUT /api/waste/:id
 // @access  Private
 const updateWaste = async (req, res) => {
@@ -122,7 +122,7 @@ const updateWaste = async (req, res) => {
   }
 };
 
-// @desc    Delete waste item
+// @desc    Kachra ne delete/remove karva mate
 // @route   DELETE /api/waste/:id
 // @access  Private
 const deleteWaste = async (req, res) => {

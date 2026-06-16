@@ -11,19 +11,19 @@ const {
 const { protect } = require('../middlewares/authMiddleware');
 const upload = require('../middlewares/uploadMiddleware');
 
-// All request routes are protected
+// Request na badha routes protected che (Login farjiyat che)
 router.use(protect);
 
-// Route: /api/requests
+// Route: /api/requests (Navi request moklava mate)
 router.post('/', sendRequest);
 
-// Incoming/Outgoing
+// Incoming/Outgoing (Aaveli ane mokleli requests jova)
 router.get('/incoming', getIncomingRequests);
 router.get('/outgoing', getOutgoingRequests);
 
-// Status updates
+// Status updates (Request ne accept, reject ke complete karva)
 router.put('/:id/accept', acceptRequest);
 router.put('/:id/reject', rejectRequest);
-router.put('/:id/complete', upload.single('paymentScreenshot'), completeRequest);
+router.put('/:id/complete', upload.single('paymentScreenshot'), completeRequest); // complete vakhte payment no screenshot pan upload thai shake
 
 module.exports = router;
