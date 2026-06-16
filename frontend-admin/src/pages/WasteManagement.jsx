@@ -80,7 +80,7 @@ const WasteManagement = () => {
                     <td className="p-4">
                       {item.image_url ? (
                         <img 
-                          src={`http://localhost:8000${item.image_url}`} 
+                          src={`${import.meta.env.VITE_API_URL}${item.image_url}`}
                           alt={item.title} 
                           className="w-12 h-12 rounded object-cover border border-slate-700"
                         />

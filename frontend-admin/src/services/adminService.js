@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/admin';
+const API_URL = `${import.meta.env.VITE_API_URL}/api/admin`;
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('adminToken');
@@ -67,7 +67,7 @@ const deleteReview = async (id) => {
 
 // Get all categories
 const getCategories = async () => {
-  const response = await axios.get(`http://localhost:8000/api/categories`); // public endpoint
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/categories`); // public endpoint
   return response.data;
 };
 
@@ -85,13 +85,13 @@ const deleteCategory = async (id) => {
 
 // Get admin profile
 const getProfile = async () => {
-  const response = await axios.get(`http://localhost:8000/api/users/profile`, getAuthHeaders());
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/profile`, getAuthHeaders());
   return response.data;
 };
 
 // Update admin profile
 const updateProfile = async (profileData) => {
-  const response = await axios.put(`http://localhost:8000/api/users/profile`, profileData, getAuthHeaders());
+  const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/users/profile`, profileData, getAuthHeaders());
   return response.data;
 };
 

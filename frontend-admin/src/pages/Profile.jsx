@@ -47,7 +47,7 @@ const Profile = () => {
         <div className="h-32 bg-gradient-to-r from-emerald-600 to-cyan-600 relative">
           <div className="absolute -bottom-12 left-8 w-24 h-24 rounded-full bg-slate-900 border-4 border-slate-900 flex items-center justify-center text-4xl text-white font-bold shadow-lg overflow-hidden">
             {profile.profile_image ? (
-              <img src={`http://localhost:8000${profile.profile_image}`} alt="Profile" className="w-full h-full object-cover" />
+              <img src={`${import.meta.env.VITE_API_URL}${profile.profile_image}`} alt="Profile" className="w-full h-full object-cover" />
             ) : (
               profile.name.charAt(0).toUpperCase()
             )}
