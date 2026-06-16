@@ -39,8 +39,8 @@ setupNotificationSocket(io);
 
 // Middlewares
 const allowedOrigins = [
-  "https://eco-loop-xi.vercel.app",
-  "https://eco-loop-yfg4.vercel.app"
+  "https://ecoloop-user.vercel.app",
+  "https://main-ecoloop.vercel.app"
 ];
 
 app.use(
